@@ -1,0 +1,15 @@
+<!-- app/views/trambolikoipsum/new.html.erb -->
+
+<h1>Word Central</h1>
+
+<h2>Tramboliko IPSUM</h2>
+
+<form action="/trambolikoipsum" method="post">
+  <div>
+  	<input type="number" name="[tramboliko]quantity" min="1" max="50">
+	<input type="radio" name="[tramboliko]type" value="words" checked> Words<br>
+	<input type="radio" name="[tramboliko]type" value="paragraphs"> Paragraphs<br>
+  </div>
+  <button type="submit">Hacerme volar</button>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+</form>

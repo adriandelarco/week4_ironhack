@@ -1,0 +1,13 @@
+<header><h1>TrambolikoIpsum</h1></header>
+
+<div><h2>Your TrambolikoIpsum text is:</h2></div>
+	<% if @type == 'paragraphs'
+		@results.each do |paragraph|
+			%><p><%= paragraph %></p><%
+		end
+	elsif @type == 'words' %>
+		<%= @results %> <%
+	end %>
+	
+
+<div><a href="/">Go back</a></div>

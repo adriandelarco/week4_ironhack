@@ -1,0 +1,15 @@
+<header><h1>Inspection results</h1></header>
+
+<div><h2>Your text was:</h2></div>
+<p><%= @text %></p>
+
+<div>
+	<h3>The text has <%= @word_count %> words.</h3>
+	<h3>The average reading time is: <%= @time %> minutes.</h3>
+	<h3>The 10 most repeated words are: <%
+		@repated_words.each do |word| %>
+			<%= word[0] %>(<%= word[1] %>), 
+		<% end %> where (n) = times.</h3>
+</div>
+
+<div><a href="/">Go back</a></div>

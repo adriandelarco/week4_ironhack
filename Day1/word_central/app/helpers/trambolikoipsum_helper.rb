@@ -1,0 +1,2 @@
+module TrambolikoipsumHelper
+end
