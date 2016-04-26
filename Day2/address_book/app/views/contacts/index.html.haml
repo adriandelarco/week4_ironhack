@@ -1,0 +1,36 @@
+%header
+	%h1 My list of contacts
+%div
+	%div
+		%form{:action => "/contacts/search/beginning_with", :method => "POST"}
+			%label{:for => "begins_with_letter"} Begins with
+			%input#contact_name{:name => "search[beginning_with]", :type => "text"}
+			%input{:type => "hidden", :name => "authenticity_token", :value => form_authenticity_token}/
+			%button{:type => "submit"} Search
+%div
+	%ul
+		-@contacts.each do |contact|
+			%li{:style => "font-size:25px"}
+				%a{:href => "/contacts/#{contact.id}"}= contact.name
+				-if contact.favorite
+					%span{:style => "color:red"} [FAVORITE]
+				-else
+					%form{:action => "/contacts/#{contact.id}/fav", :method => "POST", :style => "display:inline"}
+						%input{:type => "hidden", :name => "authenticity_token", :value => form_authenticity_token}/
+						%button{:type => "submit"} FAV
+			%span{:style => "color:grey; font-size:small"}
+				=contact.address
+				%span - 
+				=contact.email_address
+				%span - 
+				=contact.phone
+			%div
+				=image_tag contact.avatar.url(:thumb)
+%div
+	-if @search
+		%a{:href => "/contacts"} COME BACK TO CONTACTS
+	-else
+		%div
+			%a{:href => "/contacts/new"} Add new contact
+		%div
+			%a{:href => "/contacts/favorites"} View favorites

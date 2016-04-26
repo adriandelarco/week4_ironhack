@@ -1,0 +1,24 @@
+%header
+	%h1
+		Users begining with
+		=@beginning_with
+%div
+	%ul
+		-@search_results.each do |contact|
+			%li{:style => "font-size:25px"}
+				%a{:href => "/contacts/#{contact.id}"}= contact.name
+				-if contact.favorite
+					%span{:style => "color:red"} [FAVORITE]
+				-else
+					%form{:action => "/contacts/#{contact.id}/fav", :method => "POST", :style => "display:inline"}
+						%input{:type => "hidden", :name => "authenticity_token", :value => form_authenticity_token}/
+						%button{:type => "submit"} FAV
+			%span{:style => "color:grey; font-size:small"}
+				=contact.address
+				%span - 
+				=contact.email_address
+				%span - 
+				=contact.phone
+%div
+	%div
+		%a{:href => "/contacts"} Come back to contacts

@@ -1,0 +1,15 @@
+%header
+	%h1 My favorite contacts
+
+%ul
+	-@favorite_users.each do |favorite|
+		%li{:style => "font-size:25px"}
+			%a{:href => "/favorites/#{favorite.id}"}= favorite.name
+		%span{:style => "color:grey; font-size:small"}
+			=favorite.address
+			%span - 
+			=favorite.email_address
+			%span - 
+			=favorite.phone
+
+%a{:href => "/contacts"} Come back to contacts

@@ -1,0 +1,13 @@
+%h1 Add a new contact
+%div
+  %br/
+  %a{:href => "/contacts"} Come back to contacts.
+
+%div
+  = form_for @contact do |form|
+    = form.text_field :name
+    = form.text_field :address
+    = form.text_field :phone
+    = form.text_field :email_address
+    = form.file_field :avatar
+    = form.submit("Upload")
