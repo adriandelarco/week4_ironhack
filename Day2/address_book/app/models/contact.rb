@@ -24,4 +24,7 @@ class Contact < ActiveRecord::Base
 		contact.favorite = true
 		contact.save
 	end
+	def self.beginning_with(letter)
+		where("name like?", "#{letter}%")
+	end
 end

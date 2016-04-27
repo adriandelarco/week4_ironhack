@@ -4,3 +4,5 @@
 	%h2= @contact.email_address
 	%h2= @contact.address
 	%h2= @contact.phone
+%div
+	=image_tag @contact.avatar.url(:medium)
