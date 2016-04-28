@@ -1,0 +1,36 @@
+div class="container"
+	div
+		h2 class="text-center"= @movie.title
+	div class="panel panel-default"
+		div class="panel-body media"
+			div class="media-left media-middle"
+				a href=""
+					img src="#{@movie.poster}" alt="#{@movie.title}" style="height:300px; width:200px"/
+			div class="media-body"
+				h4 class="media-heading"= @movie.title
+				p= @movie.plot
+	-if @comments
+		div class="panel panel-default"
+			div class="panel-heading" Comments
+			- @comments.each do |comment|
+				ul class="list-group"
+					li class="list-group-item"
+						p= comment.text
+						p class="small"= comment.created_at
+	div class="panel panel-default"
+		div class="panel-body media"
+				form action="/movies/comments/create" method="POST" class="navbar-form navbar-left"
+					div class="btn btn-default"
+						input name="comment[text]" type="textarea" placeholder="Insert your comment"
+						input type="hidden" name="comment[movie_id]" value="#{@movie.id}" /
+						input type="hidden" name="authenticity_token" value=form_authenticity_token /
+						button type="submit" class="btn btn-default btn-sm" Publish
+	div class="panel panel-default"
+		div class="panel-body media"
+				form action="/users/login" method="POST" class="navbar-form navbar-left"
+					div class="btn btn-default"
+						input name="user[nickname]" type="text" placeholder="nickname"
+						input name="user[password]" type="password" placeholder="password"
+						input type="hidden" name="comment[movie_id]" value="#{@movie.id}" /
+						input type="hidden" name="authenticity_token" value=form_authenticity_token /
+						button type="submit" class="btn btn-default btn-sm" Login

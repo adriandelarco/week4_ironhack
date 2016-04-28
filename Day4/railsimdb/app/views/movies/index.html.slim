@@ -1,0 +1,26 @@
+div class="container"
+	div class="navbar navbar-default row"
+		form action="/movies/search" method="POST" class="navbar-form navbar-left"
+			div class="btn btn-default"
+				input#contact_name name="search[keyword]" type="text" placeholder=" keyword" 
+				input type="hidden" name="authenticity_token" value=form_authenticity_token /
+				button type="submit"  Search
+
+- if @search_results
+	div class="results container"
+		- @search_results[0].each do |movie|
+			div class="panel panel-default"
+				div class="panel-body media"
+					div class="media-left media-middle"
+						a href=""
+							img src="#{movie.poster}" alt="#{movie.title}" style="height:150px; width:100px"/
+					div class="media-body"
+						h4 class="media-heading"= movie.title
+						form action="/movies/new/" method="POST"
+							input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"
+							input type="hidden" name="movie[title]" value="#{movie.title}"
+							input type="hidden" name="movie[poster]" value="#{movie.poster}"
+							input type="hidden" name="movie[year]" value="#{movie.year}"
+							input type="hidden" name="movie[plot]" value="#{movie.plot}"
+							div class="btn-group" role="group"
+								input type="submit" class="btn btn-default" value="Start a discussion"
