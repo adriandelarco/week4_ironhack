@@ -1,0 +1,35 @@
+.concert-card{
+	display: inline-block;
+	width: 335px!important;
+	margin: 10px;
+}
+.concert-card .media{
+	margin-bottom: 10px;
+}
+.subheader{
+	margin:0 0 20px 0!important;
+}
+.page-container{
+	min-height: 800px;
+}
+.background-is-none{
+	background: none;
+}
+.heading-buttons{
+	float: right;
+	margin: 0 0 0 10px;
+	min-height: 55px;
+}
+.avatar-medium{
+	width: 100%;
+	max-height: 690px;
+}
+.is-block{
+	display: block;
+}
+.margin-10-bottom{
+	margin-bottom: 10px
+}
+footer{
+	margin-top: 50px!important;
+}

@@ -1,0 +1,58 @@
+= render "subheader", subtitle: "Detalles del concierto: #{@concert.artist}"
+
+section.section.background-is-none
+  .container
+    .heading.columns
+    	.left-heading.column.is-three-quarters
+	      h1.title= @concert.artist
+	      h2.subtitle #{@concert.city}
+	    div.column
+				div.button.is-success.title.is-5.heading-buttons #{@concert.datetime.strftime("%H:%S")}h
+				div.button.title.is-5.heading-buttons #{@concert.datetime.strftime("%d/%m/%y")}
+    div.box
+			figure.image.is-960x690
+				=image_tag @concert.avatar.url(:medium), class: "avatar-medium"
+    main class="columns"
+    	div class="column is-one-quarter"
+    		figure.image.is-outlined.is-300x225.is-block.margin-10-bottom
+    			img alt="" src="http://placehold.it/300x225" /
+    		.button.is-outlined.is-block style="display:block;margin-bottom: 10px" = @concert.venue
+    		.button.is-outlined.is-block style="display:block" = @concert.city 
+    	div class="column is-three-quarters"
+		    .box
+			  article.media
+			      .media-content
+			      	.content
+			        	big = @concert.description
+					nav.navbar
+						.navbar-left
+						  a.navbar-item
+						    span.icon.is-small
+						      i.fa.fa-heart
+	.box
+		-@comments.each do |comment|
+			div.media
+				.media-left
+					figure.image.is-64x64
+						img alt="Image" src="http://placehold.it/128x128" /
+				.media-content
+					.content
+						p
+							strong John Smith
+							small @johnsmith
+							small= comment.created_at
+							br/
+							= comment.text
+					.nav.navbar
+						.navbar-left
+							a.navbar-item
+								span.icon.is-small
+									i.fa.fa-reply
+		hr/
+		div
+			= form_for [@concert, @comment] do |f|
+				label.label Add new comment
+				p.control
+					= f.text_area :text, class: "textarea", placeholder: "Write your comment"
+				p.control
+					button.button.is-primary type="submit" Enviar

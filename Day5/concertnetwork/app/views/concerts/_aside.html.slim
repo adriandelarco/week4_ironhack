@@ -1,0 +1,44 @@
+aside class="column menu"
+      div
+        form action="/concerts/search_by_price/" method="POST"
+          .box
+            p.control
+              label.label Filtrar por precio
+              span.select
+                select name="search[price]" id="search[price]"
+                  option value="5" 5€
+                  option value="10" 10€
+                  option value="20" 20€
+                  option value="50" 50€
+                  option value="100" 100€
+              input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"
+              input.button.is-primary type="submit" value="Filtrar"
+      br/
+      div.box
+        p class="title is-5"
+          | Este mes
+        p.panel-tabs
+          a.is-active href="#"  All
+          a href="#"  Rock
+          a href="#"  Rap
+          a href="#"  Jazz
+          a href="#"  Pop
+        - from_today_to(@concerts,30).each  do |concert|
+          a.panel-block href="/concerts/#{concert.id}" 
+            span.panel-icon
+              i.fa.fa-microphone
+            p = concert.artist
+            span.panel-icon
+              i.fa.fa-calendar-o
+            small= concert.datetime.strftime("%m %h")
+      div.box
+        p class="title is-5"
+          | Más comentados
+        - most_commented(@concerts,10).each  do |concert|
+          a.panel-block href="/concerts/#{concert.id}" 
+            span.panel-icon
+              i.fa.fa-comment
+            p = concert.artist
+            span.panel-icon
+              i.fa.fa-
+            small #{concert.comments.count} comentarios.

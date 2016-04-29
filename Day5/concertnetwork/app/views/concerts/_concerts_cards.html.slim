@@ -1,0 +1,22 @@
+-concerts.each do |concert|
+        .card.concert-card
+          a href="/concerts/#{concert.id}"
+            .card-image
+              figure.image.is-4by3
+                =image_tag concert.avatar.url(:thumb)
+          .card-content
+            a href="/concerts/#{concert.id}"
+              .media
+                .media-left
+                  div class="button is-warning"
+                    = concert.price
+                    | €
+                .media-content
+                  p.title.is-5= concert.artist
+                  p.subtitle.is-6 #{concert.city} - #{concert.venue}
+                big= concert.datetime.strftime("%H:%S")
+            .content
+              = concert.description[0..100].gsub(/\s\w+$/,'')
+              | ...
+              div
+              a href="#"  #rock

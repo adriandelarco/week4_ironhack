@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Concertnetwork</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.23/css/bulma.min.css">
+  <style>
+	  .field_with_errors {
+    border: #FF4242 1px solid;
+    width: 100%;
+		}
+  </style>
+
+
+</head>
+<body>
+<header class="header">
+  <div class="container">
+    <!-- Left side -->
+    <div class="header-left">
+      <a class="header-item" href="/concerts">
+        <h1 class="title is-3">Concertsnow!</h1>
+      </a>
+      <a class="header-tab" href="/concerts">
+        Concerts today
+      </a>
+      <a class="header-tab" href="#">
+        Popular
+      </a>
+    </div>
+
+    <!-- Hamburger menu (on mobile) -->
+    <span class="header-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+
+    <!-- Right side -->
+    <div class="header-right header-menu">
+      <span class="header-item">
+        <a href="#">Login</a>
+      </span>
+      <span class="header-item">
+        <a href="#">Register</a>
+      </span>
+      <span class="header-item">
+        <a class="button" href="/concerts/new">Add new concert</a>
+      </span>
+    </div>
+  </div>
+</header>
+
+<%= yield %>
+
+<footer>
+  <div class="container is-fluid" style="margin:0!important">
+	<section class="hero is-primary">
+	  <div class="hero-content">
+	    <div class="container">
+	      <h2 class="subtitle">
+	        Follow us!
+	      </h2>
+	    </div>
+	  </div>
+	</section>
+</footer>
+
+</body>
+</html>
