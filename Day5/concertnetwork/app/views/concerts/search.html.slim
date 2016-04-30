@@ -1,10 +1,10 @@
 = render "subheader", subtitle: "Search by #{@method}"
 
 .container.page-container
-  main class="columns"
-    div class="column is-three-quarters"
+  main.columns
+    .column.is-three-quarters
       div
-        h1 class="title is-3" Search by #{@method}
+        h1.title.is-3 Search by #{@method}
         hr/
       = render "concerts_cards", concerts: search_by_price(@concerts,@price)
     = render "aside"

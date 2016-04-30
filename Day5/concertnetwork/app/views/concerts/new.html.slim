@@ -1,52 +1,55 @@
-= render "subheader", subtitle: "Add new concert!"
+= render "subheader", subtitle: "Send us your concert!"
 
-div class="container"
-	div class="column is-mobile"
-		div class="column is-10 is-offset-2"
 
-			- @concert.errors.full_messages.each do |error|
-				div class="message is-danger"
-					div class="message-body"= error
+
 
 .container.page-container
-	
-			= form_for [@concert] do |f|
-				div class="control is-horizontal"
-					div class="control-label"
-						label class="label" Artist:
-					div class="control is-grouped"
-						= f.text_field :artist, class: "input", placeholder: "artist"
-				div class="control is-horizontal"
-					div class="control-label"
-						label class="label" Where:
-					div class="control is-grouped"
-						= f.text_field :venue, class: "input", placeholder: "venue"
-						= f.text_field :city, class: "input", placeholder: "city"
-				div class="control is-horizontal"
-					div class="control-label"
-							label class="label" When:
-					div class="control is-grouped"
-						= f.date_field :datetime, class: "input", placeholder: "date"
-				div class="control is-horizontal"
-					div class="control-label"
-						label class="label" How much:
-					div class="control is-grouped"
-						= f.number_field :price, class: "input", placeholder: "price"
-				div class="control is-horizontal"
-					div class="control-label"
-						label class="label" Tell me more:
-					div class="control is-grouped"
-						= f.text_area :description, class: "textarea", placeholder: "description"
-				div class="control is-horizontal"
-					div class="control-label"
-						label class="label" Poster:
-					div class="control is-grouped"
-						= f.file_field :avatar, as: :file, class: "button"
-				div class="control is-horizontal"
-					div class="control-label"
-							label class="label"
-					div class="control is-grouped"
-						input name="commit" class="button is-success" type="submit" value="Search"
+	h1.title.is-3. Add a new concert
+	hr
+	-if @concert.errors.present?
+		.column.is-mobile
+			.column.is-10.is-offset-2
+				.message.is-danger
+						.message-body
+							- @concert.errors.full_messages.each do |error|
+								p= error
+	= form_for [@concert] do |f|
+		.control.is-horizontal
+			.control-label
+				label.label Artist:
+			.control.is-grouped
+				= f.text_field :artist, class: "input", placeholder: "artist"
+		.control.is-horizontal
+			.control-label
+				label.label Where:
+			.control.is-grouped
+				= f.text_field :venue, class: "input", placeholder: "venue"
+				= f.text_field :city, class: "input", placeholder: "city"
+		.control.is-horizontal
+			.control-label
+					label.label When:
+			.control.is-grouped
+				= f.date_field :datetime, class: "input", placeholder: "date"
+		.control.is-horizontal
+			.control-label
+				label.label How much:
+			.control.is-grouped
+				= f.number_field :price, class: "input", placeholder: "price"
+		.control.is-horizontal
+			.control-label
+				label.label Tell me more:
+			.control.is-grouped
+				= f.text_area :description, class: "textarea", placeholder: "description"
+		.control.is-horizontal
+			.control-label
+				label.label Poster:
+			.control.is-grouped
+				= f.file_field :avatar, as: :file, class: "button"
+		.control.is-horizontal
+			.control-label
+				label.label
+			.control.is-grouped
+				input.button.is-success name="commit" type="submit" value="Search"
 
 div
   br/

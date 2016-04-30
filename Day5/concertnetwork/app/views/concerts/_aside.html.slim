@@ -1,4 +1,4 @@
-aside class="column menu"
+aside.column.menu
       div
         form action="/concerts/search_by_price/" method="POST"
           .box
@@ -15,7 +15,7 @@ aside class="column menu"
               input.button.is-primary type="submit" value="Filtrar"
       br/
       div.box
-        p class="title is-5"
+        p.title.is-5
           | Este mes
         p.panel-tabs
           a.is-active href="#"  All
@@ -32,7 +32,7 @@ aside class="column menu"
               i.fa.fa-calendar-o
             small= concert.datetime.strftime("%m %h")
       div.box
-        p class="title is-5"
+        p.title.is-5
           | Más comentados
         - most_commented(@concerts,10).each  do |concert|
           a.panel-block href="/concerts/#{concert.id}" 

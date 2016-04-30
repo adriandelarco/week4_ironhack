@@ -12,13 +12,13 @@ section.section.background-is-none
     div.box
 			figure.image.is-960x690
 				=image_tag @concert.avatar.url(:medium), class: "avatar-medium"
-    main class="columns"
-    	div class="column is-one-quarter"
+    main.columns
+    	.column.is-one-quarter
     		figure.image.is-outlined.is-300x225.is-block.margin-10-bottom
     			img alt="" src="http://placehold.it/300x225" /
     		.button.is-outlined.is-block style="display:block;margin-bottom: 10px" = @concert.venue
     		.button.is-outlined.is-block style="display:block" = @concert.city 
-    	div class="column is-three-quarters"
+    	.column.is-three-quarters 
 		    .box
 			  article.media
 			      .media-content
